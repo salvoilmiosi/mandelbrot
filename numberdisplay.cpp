@@ -29,9 +29,7 @@ void number_display::render(SDL_Renderer *renderer, int xo, int yo) {
 	dstrect.w = DIGIT_W;
 	dstrect.h = DIGIT_H;
 
-	memset(numString, '\0', digits);
-
-	itoa(number, numString, 10);
+    sprintf(numString, "%d", number);
 
 	int z = 0;
 

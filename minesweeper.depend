@@ -4,6 +4,8 @@
 	<fstream>
 	<string>
 
+1411146388 
+
 1411072820 c:\users\computer\desktop\programmazione\prog sdl\minesweeper\globalvars.h
 
 1411057201 source:c:\users\computer\desktop\programmazione\prog sdl\minesweeper\loadres.cpp
@@ -12,8 +14,12 @@
 	"resources.h"
 	<windows.h>
 
+1411060802 >
+
 1411077650 c:\users\computer\desktop\programmazione\prog sdl\minesweeper\loadres.h
 	"SDL2/SDL.h"
+
+1411140876 h"
 
 1411057199 c:\users\computer\desktop\programmazione\prog sdl\minesweeper\resources.h
 
@@ -56,6 +62,8 @@
 
 1411077505 source:c:\users\computer\desktop\programmazione\prog sdl\minesweeper\resources.rc
 	"resources.h"
+
+1411081106 .h"
 
 1411142787 source:c:\users\computer\desktop\programmazione\prog sdl\minesweeper\tile.cpp
 	"tile.h"
@@ -155,4 +163,75 @@
 1411140876 source:c:\users\utente\desktop\programmazione\prog sdl\minesweeper\timer.cpp
 	"timer.h"
 	"SDL2/SDL.h"
+
+1477418662 source:/home/salvo/Scrivania/minesweeper/game.cpp
+	"game.h"
+	"minesweeper.h"
+	"numberdisplay.h"
+	"globalvars.h"
+	"loadres.h"
+	"timer.h"
+
+1477418662 /home/salvo/Scrivania/minesweeper/game.h
+	"SDL2/SDL.h"
+
+1477418662 /home/salvo/Scrivania/minesweeper/minesweeper.h
+	"SDL2/SDL.h"
+	"grid.h"
+	"tile.h"
+
+1477418662 /home/salvo/Scrivania/minesweeper/grid.h
+
+1477418662 /home/salvo/Scrivania/minesweeper/tile.h
+	"SDL2/SDL.h"
+
+1477418662 /home/salvo/Scrivania/minesweeper/numberdisplay.h
+	"SDL2/SDL.h"
+
+1477418662 /home/salvo/Scrivania/minesweeper/globalvars.h
+
+1477418888 /home/salvo/Scrivania/minesweeper/loadres.h
+	"SDL2/SDL.h"
+
+1477418662 /home/salvo/Scrivania/minesweeper/timer.h
+
+1477418662 source:/home/salvo/Scrivania/minesweeper/globalvars.cpp
+	"globalvars.h"
+	<fstream>
+	<string>
+
+1477418878 source:/home/salvo/Scrivania/minesweeper/loadres.cpp
+	"loadres.h"
+	"globalvars.h"
+	"resources.h"
+
+1477418799 /home/salvo/Scrivania/minesweeper/resources.h
+
+1477418662 source:/home/salvo/Scrivania/minesweeper/main.cpp
+	"SDL2/SDL.h"
+	"loadres.h"
+	"globalvars.h"
+	"game.h"
+	"timer.h"
+
+1477418662 source:/home/salvo/Scrivania/minesweeper/minesweeper.cpp
+	"minesweeper.h"
+	"globalvars.h"
+	"loadres.h"
+	<cstring>
+	<cstdlib>
+
+1477418662 source:/home/salvo/Scrivania/minesweeper/tile.cpp
+	"tile.h"
+
+1477418662 source:/home/salvo/Scrivania/minesweeper/timer.cpp
+	"timer.h"
+	"SDL2/SDL.h"
+
+1477418942 source:/home/salvo/Scrivania/minesweeper/numberdisplay.cpp
+	"numberdisplay.h"
+	"loadres.h"
+	"globalvars.h"
+	<cstring>
+	<cstdlib>
 

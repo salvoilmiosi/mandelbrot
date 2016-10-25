@@ -32,8 +32,6 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Linker>
-			<Add library="mingw32" />
-			<Add library="SDL2main" />
 			<Add library="SDL2" />
 		</Linker>
 		<Unit filename="game.cpp" />
@@ -50,9 +48,6 @@
 		<Unit filename="numberdisplay.h" />
 		<Unit filename="options.txt" />
 		<Unit filename="resources.h" />
-		<Unit filename="resources.rc">
-			<Option compilerVar="WINDRES" />
-		</Unit>
 		<Unit filename="tile.cpp" />
 		<Unit filename="tile.h" />
 		<Unit filename="timer.cpp" />

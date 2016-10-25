@@ -20,7 +20,7 @@ extern SDL_Texture *digitTex;
 
 extern SDL_Texture *stateIconTex;
 
-SDL_Surface *loadBMPFromResources(int RES_ID);
+SDL_Surface *loadBMPFromResources(const char *RES_ID);
 
 bool loadIcon();
 

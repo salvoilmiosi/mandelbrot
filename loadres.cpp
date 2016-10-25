@@ -3,23 +3,13 @@
 #include "globalvars.h"
 #include "resources.h"
 
-#include <windows.h>
-
 SDL_Surface *icon32;
 SDL_Texture *tileTex;
 SDL_Texture *digitTex;
 SDL_Texture *stateIconTex;
 
-SDL_Surface *loadBMPFromResources(int RES_ID) {
-	HMODULE hModule = GetModuleHandle(NULL);
-
-	HRSRC hRes = FindResource(hModule, MAKEINTRESOURCE(RES_ID), "BMP");
-	unsigned int res_size = SizeofResource(hModule, hRes);
-
-	HGLOBAL hgRes = LoadResource(hModule, hRes);
-	unsigned char* res_data = (unsigned char*)LockResource(hgRes);
-
-	return SDL_LoadBMP_RW(SDL_RWFromConstMem(res_data, res_size), 1);
+SDL_Surface *loadBMPFromResources(const char *RES_ID) {
+	return SDL_LoadBMP(RES_ID);
 }
 
 bool loadIcon() {

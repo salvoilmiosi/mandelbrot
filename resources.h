@@ -1,10 +1,10 @@
 #ifndef __RESOURCES_H_
 #define __RESOURCES_H_
 
-#define IDI_ICON 101
-#define IDB_ICON32 102
-#define IDB_TILES 103
-#define IDB_DIGITS 104
-#define IDB_STATEICONS 105
+#define IDI_ICON "res/icon.ico"
+#define IDB_ICON32 "res/icon32.bmp"
+#define IDB_TILES "res/tiles.bmp"
+#define IDB_DIGITS "res/digits.bmp"
+#define IDB_STATEICONS "res/stateicons.bmp"
 
 #endif // __RESOURCES_H_
