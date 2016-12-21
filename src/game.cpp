@@ -8,8 +8,8 @@
 
 #include "timer.h"
 
-static number_display flag_nd(DISPLAY_DIGITS);
-static number_display time_nd(DISPLAY_DIGITS);
+static number_display<DISPLAY_DIGITS> flag_nd;
+static number_display<DISPLAY_DIGITS> time_nd;
 
 static minesweeper *ms;
 
@@ -205,9 +205,9 @@ void renderGame(SDL_Renderer *renderer) {
 	SDL_RenderClear(renderer);
 
 	if (ms->getState() == GAME_BEFORE) {
-		flag_nd.setNumber(MINE_NUM);
+		flag_nd = MINE_NUM;
 	} else {
-		flag_nd.setNumber(ms->countAllBombs() - ms->countAllFlags());
+		flag_nd = ms->countAllBombs() - ms->countAllFlags();
 	}
 	flag_nd.render(renderer, OFFSET, OFFSET);
 
@@ -221,7 +221,7 @@ void renderGame(SDL_Renderer *renderer) {
 	int iconx = (screen_w - ICON_W) / 2;
 	int icony = (DIGIT_H - ICON_H) / 2 + OFFSET;
 
-	time_nd.setNumber(game_timer.get_ticks() / 1000);
+	time_nd = game_timer.get_ticks() / 1000;
 	time_nd.render(renderer, timex, OFFSET);
 
 	ms->render(renderer, xoffset = gridx, yoffset = gridy);
