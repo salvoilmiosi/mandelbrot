@@ -10,7 +10,7 @@ SDL_Texture *digitTex;
 SDL_Texture *stateIconTex;
 
 SDL_Surface *loadBMPFromResources(const char *RES_ID) {
-	return SDL_LoadBMP_RW(getResourceRW(RES_ID), 0);
+	return SDL_LoadBMP_RW(getResourceRW(RES_ID), 1);
 }
 
 bool loadResources(const std::string &filename, SDL_Renderer *renderer) {
