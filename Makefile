@@ -39,10 +39,10 @@ clean:
 	rm -rf $(OBJ_DIR)
 	$(MAKE) -C $(resource_pack_dir) clean
 
-$(BIN_DIR)/$(OUT_BIN): $(OBJECTS) $(BIN_DIR)/resource.res
+$(BIN_DIR)/$(OUT_BIN): $(OBJECTS) $(BIN_DIR)/resource.dat
 	$(LD) -o $(BIN_DIR)/$(OUT_BIN) $(OBJECTS) $(LDFLAGS) $(LIBS)
 
-$(BIN_DIR)/resource.res: resource/resource.txt $(resource_pack)
+$(BIN_DIR)/resource.dat: resource/resource.txt $(resource_pack)
 	resource_pack/bin/resource_pack $< $@
 
 $(resource_load): $(resource_pack)

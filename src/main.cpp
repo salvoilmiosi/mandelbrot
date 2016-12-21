@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
 	if (renderer == NULL)
 		return 2;
 
-	if (!loadResources(path + "resource.res", renderer))
+	if (!loadResources(path + "resource.dat", renderer))
 		return 2;
 	
 	SDL_SetWindowIcon(window, icon32);
