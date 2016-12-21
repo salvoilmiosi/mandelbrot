@@ -1,14 +1,13 @@
 #include "globalvars.h"
 
 #include <fstream>
-#include <string>
 
 #undef VAR
 #define VAR(type, name, default) type name = default;
 GLOBAL_VARS
 
-void readOptions() {
-    std::ifstream ifs(FILENAME);
+void readOptions(const std::string &filename) {
+    std::ifstream ifs(filename);
     std::string str;
 
     std::getline(ifs, str);
@@ -23,8 +22,8 @@ void readOptions() {
     }
 }
 
-void saveOptions() {
-    std::ofstream ofs(FILENAME, std::ofstream::trunc|std::ofstream::out);
+void saveOptions(const std::string &filename) {
+    std::ofstream ofs(filename, std::ofstream::trunc|std::ofstream::out);
 
     ofs << FIRST_LINE << "\n\n";
 #undef VAR

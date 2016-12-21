@@ -1,10 +1,12 @@
 #include "SDL2/SDL.h"
 
-#include "loadres.h"
+#include "resources.h"
 #include "globalvars.h"
 
 #include "game.h"
 #include "timer.h"
+
+#include <string>
 
 static SDL_Window *window;
 static SDL_Renderer *renderer;
@@ -15,10 +17,13 @@ int main(int argc, char **argv) {
 	if (SDL_Init(SDL_INIT_EVERYTHING) == -1)
 		return 1;
 
-	if (!loadIcon())
-		return 2;
+	std::string path;
+	if (argc > 0) {
+		path = argv[0];
+		path = path.substr(0, 1 + path.find_last_of("\\/"));
+	}
 
-    readOptions();
+    readOptions(path + "options.txt");
 
 	int min_w = DIGIT_W*DISPLAY_DIGITS*2 + 4*OFFSET + ICON_W;
 	int w = TILE_W * GRID_W + 2 * OFFSET;
@@ -31,14 +36,14 @@ int main(int argc, char **argv) {
 	if (window == NULL)
 		return 2;
 
-	SDL_SetWindowIcon(window, icon32);
-
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	if (renderer == NULL)
 		return 2;
 
-	if (!loadResources(renderer))
+	if (!loadResources(path + "resource.res", renderer))
 		return 2;
+	
+	SDL_SetWindowIcon(window, icon32);
 
 	gameStartup();
 
@@ -68,7 +73,7 @@ int main(int argc, char **argv) {
     }
 
     gameCleanup();
-    saveOptions();
+    saveOptions(path + "options.txt");
 
 	freeResources();
 	SDL_DestroyRenderer(renderer);

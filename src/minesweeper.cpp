@@ -1,7 +1,7 @@
 #include "minesweeper.h"
 
 #include "globalvars.h"
-#include "loadres.h"
+#include "resources.h"
 
 #include <cstring>
 #include <cstdlib>

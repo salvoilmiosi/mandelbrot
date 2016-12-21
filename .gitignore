@@ -1,4 +1,8 @@
-bin/
-obj/
-.depend
-.layout
+bin/minesweeper
+resource_pack/bin/
+options.txt
+resource.res
+*.exe
+*.o
+*.d
+*.a

@@ -3,6 +3,8 @@
 
 #include "SDL2/SDL.h"
 
+#include <string>
+
 static const int TILE_W = 20;
 static const int TILE_H = 20;
 static const int DIGIT_W = 30;
@@ -22,9 +24,7 @@ extern SDL_Texture *stateIconTex;
 
 SDL_Surface *loadBMPFromResources(const char *RES_ID);
 
-bool loadIcon();
-
-bool loadResources(SDL_Renderer *renderer);
+bool loadResources(const std::string &filename, SDL_Renderer *renderer);
 
 void freeResources();
 

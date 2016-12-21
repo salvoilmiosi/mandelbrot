@@ -1,6 +1,6 @@
 #include "numberdisplay.h"
 
-#include "loadres.h"
+#include "resources.h"
 #include "globalvars.h"
 
 #include <cstring>
