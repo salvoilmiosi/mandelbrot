@@ -18,6 +18,10 @@ static timer game_timer;
 static tile *pressed = NULL;
 static int buttonDown = -1;
 static bool doubleButtons = false;
+static bool keyboardInput = false;
+
+static int key_tx = 0;
+static int key_ty = 0;
 
 static int xoffset;
 static int yoffset;
@@ -165,16 +169,76 @@ static void mouseMoved(int mousex, int mousey) {
 	}
 }
 
+static void keyDown(SDL_Keycode key) {
+	switch (key) {
+	case SDLK_LEFT:
+		if (--key_tx < 0) key_tx += GRID_W;
+		mouseMoved(key_tx * TILE_W + xoffset, key_ty * TILE_H + yoffset);
+		break;
+	case SDLK_RIGHT:
+		if (++key_tx >= GRID_W) key_tx -= GRID_W;
+		mouseMoved(key_tx * TILE_W + xoffset, key_ty * TILE_H + yoffset);
+		break;
+	case SDLK_UP:
+		if (--key_ty < 0) key_ty += GRID_H;
+		mouseMoved(key_tx * TILE_W + xoffset, key_ty * TILE_H + yoffset);
+		break;
+	case SDLK_DOWN:
+		if (++key_ty >= GRID_H) key_ty -= GRID_H;
+		mouseMoved(key_tx * TILE_W + xoffset, key_ty * TILE_H + yoffset);
+		break;
+	case SDLK_SPACE:
+		mouseDown(key_tx * TILE_W + xoffset, key_ty * TILE_H + yoffset, SDL_BUTTON_LEFT);
+		break;
+	case SDLK_z:
+		mouseDown(key_tx * TILE_W + xoffset, key_ty * TILE_H + yoffset, SDL_BUTTON_RIGHT);
+		break;
+	case SDLK_x:
+		mouseDown(key_tx * TILE_W + xoffset, key_ty * TILE_H + yoffset, SDL_BUTTON_MIDDLE);
+		break;
+	default:
+		break;
+	}
+}
+
+static void keyUp(SDL_Keycode key) {
+	switch (key) {
+	case SDLK_SPACE:
+		mouseUp(key_tx * TILE_W + xoffset, key_ty * TILE_H + yoffset, SDL_BUTTON_LEFT);
+		break;
+	case SDLK_z:
+		mouseUp(key_tx * TILE_W + xoffset, key_ty * TILE_H + yoffset, SDL_BUTTON_RIGHT);
+		break;
+	case SDLK_x:
+		mouseUp(key_tx * TILE_W + xoffset, key_ty * TILE_H + yoffset, SDL_BUTTON_MIDDLE);
+		break;
+	default:
+		break;
+	}
+}
+
 void handleEvent(SDL_Event& event) {
 	switch(event.type) {
 	case SDL_MOUSEBUTTONDOWN:
+		keyboardInput = false;
 		mouseDown(event.button.x, event.button.y, event.button.button);
 		break;
 	case SDL_MOUSEBUTTONUP:
+		keyboardInput = false;
 		mouseUp(event.button.x, event.button.y, event.button.button);
 		break;
 	case SDL_MOUSEMOTION:
-		mouseMoved(event.motion.x, event.motion.y);
+		if (!keyboardInput) {
+			mouseMoved(event.motion.x, event.motion.y);
+		}
+		break;
+	case SDL_KEYDOWN:
+		keyboardInput = true;
+		keyDown(event.key.keysym.sym);
+		break;
+	case SDL_KEYUP:
+		keyboardInput = true;
+		keyUp(event.key.keysym.sym);
 		break;
 	}
 }
@@ -226,8 +290,13 @@ void renderGame(SDL_Renderer *renderer) {
 
 	ms->render(renderer, xoffset = gridx, yoffset = gridy);
 
+	if (keyboardInput) {
+		SDL_Rect rect = {key_tx * TILE_W + xoffset, key_ty * TILE_H + yoffset, TILE_W, TILE_H};
+		SDL_SetRenderDrawColor(renderer, 0xff,0x0,0x0,0xff);
+		SDL_RenderDrawRect(renderer, &rect);
+	}
+
 	renderStateIcon(renderer, iconx, icony);
 
 	SDL_RenderPresent(renderer);
 }
-
