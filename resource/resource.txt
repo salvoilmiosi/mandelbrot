@@ -5,3 +5,5 @@ IDB_TILES "tiles.bmp"
 IDB_DIGITS "digits.bmp"
 
 IDB_STATEICONS "stateicons.bmp"
+
+#funziona!
